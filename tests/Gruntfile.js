@@ -15,15 +15,11 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         xgettext: {
-            default_options: {
-                options: {
-                    functionName: ["tr", "i18n.tr", "i18n"],
-                    potFile: "messages.pot",
-                    es6: {
-                        experimental: true
-                    }
-                },
-
+            options: {
+                functionName: ["tr", "i18n.tr", "i18n"],
+                potFile: "./messages.pot"
+            },
+            target: {
                 files: {
                     handlebars: ["assets/*.handlebars"],
                     html: ["assets/*.html"],

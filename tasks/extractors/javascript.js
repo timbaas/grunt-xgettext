@@ -116,7 +116,7 @@ module.exports = function(file, options) {
             break;
         case "CallExpression":
             var callee = syntax.callee;
-            if (_.contains(fn, flattenIdentifier(callee))) {
+            if (_.includes(fn, flattenIdentifier(callee))) {
                 parseInvocation(syntax);
             } else {
                 scan(callee);

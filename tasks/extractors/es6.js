@@ -10,7 +10,7 @@
 "use strict";
 
 var grunt = require("grunt"),
-    babel = require("babel"),
+    babel = require("babel-core"),
     fs   = require('fs'),
     tempWrite = require('temp-write'),
     javascriptExtractor = require("./javascript");
@@ -20,7 +20,12 @@ var grunt = require("grunt"),
  * See options: https://babeljs.io/docs/usage/options/
  */
 module.exports = function(file, options) {
-    var content = babel.transformFileSync(file, options.es6);
+    var content = babel.transformFileSync(file, ( options.es6 || {
+      presets:['es2015','stage-2'],
+      retainLines:true,
+      ast:false
+    }));
+
     var code = content.code;
 
     var filePath = tempWrite.sync(code);

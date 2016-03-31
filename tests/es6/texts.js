@@ -1,17 +1,19 @@
 import Model from 'model';
-import tr from 'gettext';
 import Framework from 'framework';
+import I18n from 'i18n';
+
+const tr = I18n.translate;
 
 class TestCase {
+
     constructor() {
 
     }
 
-    validate() {
+    async validate() {
         var model = new Model();
-        model.save().then(bla => {
-            this.send("success", tr("Hallo from es6!"))
-        });
+        await model.save();
+        this.send("success", tr("Hallo from es6!"));
     }
 }
 
